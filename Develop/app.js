@@ -9,27 +9,41 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
+// array of objects containing employee info
+const teamMembers = [];
 
-const teamMembers = [
-  // array of objects containing employee info
+// create arrays of questions for each role
+// array of starter questions to prompt basic employee info
+const starterQuestions = [
+  {
+    type: "input",
+    name: "name",
+    message: "What is the team member's name?",
+  },
+  {
+    type: "input",
+    name: "id",
+    message: "What is the team member's id?",
+  },
+  {
+    type: "list",
+    name: "role",
+    message: "What is the team member's role?",
+    choices: ["Manager", "Engineer", "Intern"],
+  },
 ];
-inquirer
-  .prompt(
-    {
-      type: "input",
-      name: "name",
-      message: "What is the team memeber's name?",
-    },
-    {
-      type: "list",
-      name: "role",
-      message: "What is the team member's role?",
-      choices: ["Manager", "Engineer", "Intern"],
-    }
-  )
-  .then((res) => {
-    console.log(res);
-  });
+
+// take the input from the first two questions
+// to determine which ones to prompt next
+inquirer.prompt(starterQuestions).then((answers) => {
+  if (answers.choices === "Manager") {
+    getManagerInfo();
+  } else if (answers.choices === "Engineer") {
+    getEngineerInfo();
+  } else if (answers.choices === "Intern") {
+    getInternInfo();
+  }
+});
 // pass info from teamMembers array to the render function
 // const newHtml = render(teamMembers);
 // pass rendered data into writeFileSync
