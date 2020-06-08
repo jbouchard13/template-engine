@@ -13,10 +13,27 @@ const render = require("./lib/htmlRenderer");
 const teamMembers = [
   // array of objects containing employee info
 ];
+inquirer
+  .prompt(
+    {
+      type: "input",
+      name: "name",
+      message: "What is the team memeber's name?",
+    },
+    {
+      type: "list",
+      name: "role",
+      message: "What is the team member's role?",
+      choices: ["Manager", "Engineer", "Intern"],
+    }
+  )
+  .then((res) => {
+    console.log(res);
+  });
 // pass info from teamMembers array to the render function
-const newHtml = render(teamMembers);
+// const newHtml = render(teamMembers);
 // pass rendered data into writeFileSync
-fs.writeFileSync(outputPath, newHtml, "utf-8");
+// fs.writeFileSync(outputPath, newHtml, "utf-8");
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
