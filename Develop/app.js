@@ -131,8 +131,8 @@ const endProgram = (teamMembers) => {
   // console log to let the user know it has been saved
   console.log("New html file saved!");
 };
-// create functions to get info for each employee type
 
+// create functions to get info for each employee type
 // function that will get manager info with inquirer
 const getManagerInfo = () => {
   // run inquirer to prompt info for a new manager
@@ -144,11 +144,15 @@ const getManagerInfo = () => {
       answers.email,
       answers.officeNumber
     );
+
+    // push the new team member to the teamMembers array
     teamMembers.push(manager);
-    console.log("tm", teamMembers);
+
     if (answers.add === "I do not want to add another") {
+      // save and end the program
       endProgram(teamMembers);
     } else {
+      // check the selected answers to determine what to add next
       addCheck(answers);
     }
   });
@@ -162,11 +166,15 @@ const getEngineerInfo = () => {
       answers.email,
       answers.github
     );
+
+    // push the new team member to the teamMembers array
     teamMembers.push(engineer);
-    console.log("tm", teamMembers);
+
     if (answers.add === "I do not want to add another") {
+      // save and end the program
       endProgram(teamMembers);
     } else {
+      // check the selected answers to determine what to add next
       addCheck(answers);
     }
   });
@@ -180,11 +188,15 @@ const getInternInfo = () => {
       answers.email,
       answers.school
     );
+
+    // push the new team member to the teamMembers array
     teamMembers.push(intern);
-    console.log("tm", intern);
+
     if (answers.add === "I do not want to add another") {
+      // save and end the program
       endProgram(teamMembers);
     } else {
+      // check the selected answers to determine what to add next
       addCheck(answers);
     }
   });
