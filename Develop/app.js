@@ -16,7 +16,7 @@ const teamMembers = [];
 // array of starter questions to prompt basic employee info
 const starterQuestion = {
   type: "list",
-  name: "role",
+  name: "add",
   message: "What is the team member's role?",
   choices: ["Manager", "Engineer", "Intern"],
 };
@@ -109,14 +109,28 @@ const internQuestions = [
 // take the input from the first question
 // to determine which ones to prompt next
 inquirer.prompt(starterQuestion).then((answers) => {
-  if (answers.role === "Manager") {
+  addCheck(answers);
+});
+
+// create a function to check when the user wants to add a new person
+const addCheck = (answers) => {
+  if (answers.add === "Manager") {
     getManagerInfo();
-  } else if (answers.role === "Engineer") {
+  } else if (answers.add === "Engineer") {
     getEngineerInfo();
-  } else if (answers.role === "Intern") {
+  } else if (answers.add === "Intern") {
     getInternInfo();
   }
-});
+};
+// create an ending function that adds all info to html and tells the user it is added
+const endProgram = (teamMembers) => {
+  // pass info from teamMembers array to the render function
+  const newHtml = render(teamMembers);
+  // pass rendered data into writeFileSync
+  fs.writeFileSync(outputPath, newHtml, "utf-8");
+  // console log to let the user know it has been saved
+  console.log("New html file saved!");
+};
 // create functions to get info for each employee type
 
 // function that will get manager info with inquirer
@@ -132,6 +146,11 @@ const getManagerInfo = () => {
     );
     teamMembers.push(manager);
     console.log("tm", teamMembers);
+    if (answers.add === "I do not want to add another") {
+      endProgram(teamMembers);
+    } else {
+      addCheck(answers);
+    }
   });
 };
 // function that will get engineer info with inquirer
@@ -144,7 +163,12 @@ const getEngineerInfo = () => {
       answers.github
     );
     teamMembers.push(engineer);
-    console.log("tmn", teamMembers);
+    console.log("tm", teamMembers);
+    if (answers.add === "I do not want to add another") {
+      endProgram(teamMembers);
+    } else {
+      addCheck(answers);
+    }
   });
 };
 // function that will get intern info with inquirer
@@ -158,13 +182,13 @@ const getInternInfo = () => {
     );
     teamMembers.push(intern);
     console.log("tm", intern);
+    if (answers.add === "I do not want to add another") {
+      endProgram(teamMembers);
+    } else {
+      addCheck(answers);
+    }
   });
 };
-
-// pass info from teamMembers array to the render function
-// const newHtml = render(teamMembers);
-// pass rendered data into writeFileSync
-// fs.writeFileSync(outputPath, newHtml, "utf-8");
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
