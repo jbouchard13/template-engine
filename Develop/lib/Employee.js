@@ -10,3 +10,5 @@ class Employee {
   getEmail() {}
   getRole() {}
 }
+
+module.exports = Employee;
