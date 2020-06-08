@@ -105,6 +105,7 @@ const internQuestions = [
   },
 ];
 
+// call inquirer to start the app
 // take the input from the first question
 // to determine which ones to prompt next
 inquirer.prompt(starterQuestion).then((answers) => {
@@ -118,7 +119,7 @@ inquirer.prompt(starterQuestion).then((answers) => {
 });
 // create functions to get info for each employee type
 
-// manager info function
+// function that will get manager info with inquirer
 const getManagerInfo = () => {
   // run inquirer to prompt info for a new manager
   inquirer.prompt(managerQuestions).then((answers) => {
@@ -129,7 +130,34 @@ const getManagerInfo = () => {
       answers.email,
       answers.officeNumber
     );
-    console.log(manager);
+    teamMembers.push(manager);
+    console.log("tm", teamMembers);
+  });
+};
+// function that will get engineer info with inquirer
+const getEngineerInfo = () => {
+  inquirer.prompt(engineerQuestions).then((answers) => {
+    const engineer = new Engineer(
+      answers.name,
+      answers.id,
+      answers.email,
+      answers.github
+    );
+    teamMembers.push(engineer);
+    console.log("tmn", teamMembers);
+  });
+};
+// function that will get intern info with inquirer
+const getInternInfo = () => {
+  inquirer.prompt(internQuestions).then((answers) => {
+    const intern = new Intern(
+      answers.name,
+      answers.id,
+      answers.email,
+      answers.school
+    );
+    teamMembers.push(intern);
+    console.log("tm", intern);
   });
 };
 
