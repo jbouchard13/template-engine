@@ -18,6 +18,9 @@
 >
 > [Questions](#questions)
 
+### Demo
+![template-engine](https://user-images.githubusercontent.com/61129844/84277809-fdd2f780-ab01-11ea-8714-ff2110a0b3bb.gif)
+
 ### Description
 
 This is a cli application running with node that prompts the user using Inquirer for information about their employees. The provided answers are then used to populate an HTML file to build a webpage displaying all of the user's employees on one page. Each specific role has certain info pertaining to them such as the manager role having their office number displayed or the engineer having their github username displayed.
@@ -30,9 +33,6 @@ The application is run through node so after opening the file and running npm in
 
 As an employer, I want to generate a webpage that displays my team member's information, so that I have quick access to their info.
 
-### Licensing
-
-None
 
 ### Contributors
 
