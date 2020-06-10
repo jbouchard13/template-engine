@@ -12,8 +12,6 @@
 >
 > [Usage](#usage)
 >
-> [Licensing](#licensing)
->
 > [Contributors](#contributors)
 >
 > [Tests](#tests)
