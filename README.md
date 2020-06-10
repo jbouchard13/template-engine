@@ -4,6 +4,8 @@
 
 > ## Table Of Contents
 >
+> [Demo](#Demo)
+>
 > [Description](#description)
 >
 > [Installation](#installation)
@@ -23,7 +25,7 @@
 
 ### Description
 
-This is a cli application running with node that prompts the user using Inquirer for information about their employees. The provided answers are then used to populate an HTML file to build a webpage displaying all of the user's employees on one page. Each specific role has certain info pertaining to them such as the manager role having their office number displayed or the engineer having their github username displayed.
+This is a CLI application running with node that prompts the user using Inquirer for information about their employees. The provided answers are then used to populate an HTML file to build a webpage displaying all of the user's employees on one page. Each specific role has certain info pertaining to them such as the manager role having their office number displayed or the engineer having their github username displayed.
 
 ### Installation
 
